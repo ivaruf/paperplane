@@ -13,13 +13,16 @@
  *   message  → {type:'SKIP_WAITING'} activates a waiting update immediately.
  */
 
-const VERSION = '2026-09-07.1';
+const VERSION = '2026-09-16.1'; // cached shells learn the arcade moved to gophercloud.games
 const CACHE_PREFIX = 'glider-';
 const CACHE_NAME = `${CACHE_PREFIX}${VERSION}`;
 
 const APP_SHELL = [
   './',
   './index.html',
+  // Has to be IN the cache, not merely deployed: the players this rescues
+  // are the ones whose browser has stopped asking this origin for anything.
+  './moved.js',
   './manifest.webmanifest',
   './css/style.css',
   './js/main.js',
